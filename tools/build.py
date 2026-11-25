@@ -1,8 +1,9 @@
 """Builds index.html and assets/js/photos.js from photos.json.
 Run: python3 tools/build.py  (from the repo root)"""
 import json, html, os
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-photos = json.load(open(os.path.join(ROOT, 'tools', 'photos.json')))
+REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ROOT = os.path.join(REPO, 'public')  # the published website
+photos = json.load(open(os.path.join(REPO, 'tools', 'photos.json')))
 idx = {pid: i for i, (pid, cap) in enumerate(photos)}
 cap = dict(photos)
 E = html.escape
@@ -44,7 +45,7 @@ HIST = [('b0','1041 ./cyber-plus-ai --hybrid'),('b1','1042 obs --stream live --c
         ('b4','1044 cal --next-events'),('h1','1045 ./shaping-the-future --venue telford-college'),('h2','1046 ./fireside-chat --stream live')]
 hist = '\n'.join(f'<figure>{tile(pid)}<figcaption>{E(line)}</figcaption></figure>' for pid, line in HIST)
 
-tpl = open(os.path.join(ROOT, 'tools', 'index.template.html')).read()
+tpl = open(os.path.join(REPO, 'tools', 'index.template.html')).read()
 out = (tpl.replace('{{ROW_A}}', track(rowA)).replace('{{ROW_B}}', track(rowB, rev=True))
           .replace('{{ZONES}}', zones).replace('{{HIST}}', hist).replace('{{COUNT}}', str(n)))
 photos_js = 'window.SHOWCASE_PHOTOS=' + json.dumps(photos) + ';\n'

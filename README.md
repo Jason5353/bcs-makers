@@ -6,23 +6,25 @@ Plain HTML, CSS and JavaScript: no frameworks, no build step needed to deploy.
 ## What's in here
 
 ```
-index.html                 the page (generated, see "Editing" below)
-404.html                   "Wrong timeline" not-found page
-_headers                   security headers for Cloudflare Pages
-favicon.svg, robots.txt
-assets/css/site.css        all styling (BCS palette only)
-assets/js/site.js          typed headline, photo viewer, strip pause, retro TV
-assets/js/photos.js        photo list for the viewer (generated)
-assets/fonts/              self-hosted Barlow + JetBrains Mono (SIL OFL, licences included)
-assets/img/gallery/        85 photos: <id>.jpg (full) and <id>-t.jpg (thumbnail)
-tools/build.py             rebuilds index.html and photos.js
+public/                    everything published as the website
+  index.html               the page (generated, see "Editing" below)
+  404.html                 "Wrong timeline" not-found page
+  _headers                 security headers (Cloudflare)
+  favicon.svg, robots.txt
+  assets/css/site.css      all styling (BCS palette only)
+  assets/js/site.js        typed headline, menu, photo viewer, strip pause, retro TV
+  assets/js/photos.js      photo list for the viewer (generated)
+  assets/fonts/            self-hosted Barlow + JetBrains Mono (SIL OFL, licences included)
+  assets/img/              green BCS logo, 85 photos (<id>.jpg full, <id>-t.jpg thumbnail)
+tools/build.py             rebuilds public/index.html and photos.js
 tools/index.template.html  the page template you edit
 tools/photos.json          photo ids and captions
+wrangler.jsonc             Cloudflare Worker config (publishes public/)
 ```
 
 ## Deploy: GitHub + Cloudflare (Workers static assets)
 
-The repo is connected to a Cloudflare Worker called **bcs-makers**. Every push to `main` runs `npx wrangler deploy`, which publishes the files listed by `wrangler.jsonc` (everything except what `.assetsignore` leaves out: README, tools, config). `_headers` and `404.html` work the same as on Pages.
+The repo is connected to a Cloudflare Worker called **bcs-makers**. Every push to `main` runs `npx wrangler deploy`, which publishes the `public/` folder (set in `wrangler.jsonc`). README, tools and config stay private. `_headers` and `404.html` work the same as on Pages.
 
 ### Original Pages instructions (if you ever move back to Pages)
 
@@ -51,8 +53,8 @@ Edit `tools/index.template.html` (page text), `tools/photos.json` (photos and ca
 python3 tools/build.py
 ```
 
-That regenerates `index.html` and `assets/js/photos.js`. Commit and push.
-Quick text fixes can also be made straight in `index.html`, but they'll be overwritten next time the build runs.
+That regenerates `public/index.html` and `public/assets/js/photos.js`. Commit and push.
+Quick text fixes can also be made straight in `public/index.html`, but they'll be overwritten next time the build runs.
 
 ### Before going live: placeholders to fill
 

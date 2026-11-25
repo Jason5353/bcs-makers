@@ -1,8 +1,0 @@
-# Files in the repo that must NOT be published as part of the website
-.git
-.gitignore
-.assetsignore
-wrangler.jsonc
-README.md
-tools
-node_modules
