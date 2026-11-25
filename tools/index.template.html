@@ -8,12 +8,12 @@
 <meta property="og:title" content="Make. Hack. Show. BCS Shropshire Maker &amp; Tech Showcase 2027">
 <meta property="og:description" content="Free, hands-on, all ages. Robots, retro computing, arcade, slot cars, 3D printing and AI.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="assets/img/gallery/p65.jpg">
+<meta property="og:image" content="/assets/img/gallery/p65.jpg">
 <meta name="theme-color" content="#000000">
-<link rel="preload" href="assets/fonts/barlow-condensed-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="assets/css/site.css?v={{V_CSS}}">
-<script src="assets/js/site.js?v={{V_JS}}" defer></script>
+<link rel="preload" href="/assets/fonts/barlow-condensed-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/css/site.css?v={{V_CSS}}">
+<script src="/assets/js/site.js?v={{V_JS}}" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -21,7 +21,7 @@
 <header class="site-head">
 <div class="wrap">
 <a class="lockup" href="#top" aria-label="BCS Shropshire Makers &amp; Tech Showcase 2027, back to top">
-<img src="assets/img/bcs-logo-green.png" alt="BCS, The Chartered Institute for IT" width="191" height="240">
+<img src="/assets/img/bcs-logo-green.png" alt="BCS, The Chartered Institute for IT" width="191" height="240">
 <span class="lockup-text" aria-hidden="true"><b>BCS Shropshire</b><span>Makers &amp; Tech</span><span>Showcase</span><span>2027</span></span>
 </a>
 <button type="button" class="menu-btn" aria-expanded="false" aria-controls="mainnav" aria-label="Menu"><i></i><i></i><i></i></button>
@@ -31,8 +31,9 @@
 <a href="#who">who</a>
 <a href="#sponsor">sponsor</a>
 <a href="#man">man showcase</a>
+<a href="/about/">whoami</a>
 </nav>
-<a class="btn btn-green" href="#mode">Register interest</a>
+<a class="btn btn-green" href="#f-register" data-form>Register interest</a>
 </div>
 </header>
 
@@ -44,12 +45,12 @@
 <h1 class="headline" data-type aria-label="Make. Hack. Show."><span aria-hidden="true"><span data-line>Make.</span><br><span class="l2" data-line>Hack.</span><br><span data-line>Show.</span></span></h1>
 <p class="intro">A free, hands-on day of robots, retro computers, arcade cabinets, slot-car racing, 3D printing and AI, shown by the makers, schools, colleges and companies who built them.</p>
 <div class="actions">
-<a class="btn btn-lime cut" href="#mode">Register interest</a>
-<a class="btn btn-ghost" href="#mode">Exhibit your project</a>
+<a class="btn btn-lime cut" href="#f-register" data-form>Register interest</a>
+<a class="btn btn-ghost" href="#f-exhibit" data-form>Exhibit your project</a>
 </div>
 </div>
 <div class="hero-side">
-<div class="frame"><video class="hero-video" autoplay muted loop playsinline preload="auto" poster="assets/video/montage-poster.jpg" aria-label="Montage of makers: robots, retro arcade games, VR, 3D printing and kids building electronics" width="960" height="540"><source src="assets/video/montage.mp4" type="video/mp4"></video></div>
+<div class="frame"><video class="hero-video" autoplay muted loop playsinline preload="auto" poster="/assets/video/montage-poster.jpg" aria-label="Montage of makers: robots, retro arcade games, VR, 3D printing and kids building electronics" width="960" height="540"><source src="/assets/video/montage.mp4" type="video/mp4"></video></div>
 <div class="term">
 <div class="term-bar"><span>~/showcase — bash</span><span aria-hidden="true">● ● ●</span></div>
 <pre><span class="g">$</span> cat /etc/motd
@@ -75,7 +76,7 @@ ENTRY  Free · all ages</pre>
 
 <section id="floor" class="section light" aria-labelledby="floor-h">
 <div class="wrap">
-<p class="cmd">$ ls -l /show-floor</p>
+<p class="cmd">$ ls -l /show-floor  <span class="hint"># pick a zone</span></p>
 <h2 id="floor-h" class="h2">Push the buttons. Touch the tech.</h2>
 <div class="zones">
 {{ZONES}}
@@ -109,9 +110,9 @@ ENTRY  Free · all ages</pre>
 <p class="cmd">$ who --exhibitors</p>
 <h2 id="who-h" class="h2">Everyone with something to show</h2>
 <div class="three">
-<article class="who"><img src="assets/img/gallery/p45-t.jpg" alt="Makers soldering together in a workshop" loading="lazy" width="640" height="440"><div><span class="uid">uid=1000(makers)</span><h3>Makers, hackers &amp; clubs</h3><p>Makerspaces, radio societies, retro collectors, slot-car racers, upcyclers and lone tinkerers with something brilliant on the kitchen table.</p></div></article>
-<article class="who b"><img src="assets/img/gallery/p53-t.jpg" alt="Teenagers building a robot kit together" loading="lazy" width="640" height="440"><div><span class="uid">uid=1001(schools)</span><h3>Schools &amp; colleges</h3><p>STEM clubs, robotics teams, coursework, T-Level and degree projects. A chance for students to demo to the public and to future employers.</p></div></article>
-<article class="who c"><img src="assets/img/gallery/p63-t.jpg" alt="Engineers working alongside a collaborative robot arm" loading="lazy" width="640" height="440"><div><span class="uid">uid=1002(industry)</span><h3>Industry &amp; employers</h3><p>Tech companies and their in-house enthusiasts: show what you build, meet local talent, and run a hands-on demo your engineers are proud of.</p></div></article>
+<article class="who"><img src="/assets/img/gallery/p45-t.jpg" alt="Makers soldering together in a workshop" loading="lazy" width="640" height="440"><div><span class="uid">uid=1000(makers)</span><h3>Makers, hackers &amp; clubs</h3><p>Makerspaces, radio societies, retro collectors, slot-car racers, upcyclers and lone tinkerers with something brilliant on the kitchen table.</p></div></article>
+<article class="who b"><img src="/assets/img/gallery/p53-t.jpg" alt="Teenagers building a robot kit together" loading="lazy" width="640" height="440"><div><span class="uid">uid=1001(schools)</span><h3>Schools &amp; colleges</h3><p>STEM clubs, robotics teams, coursework, T-Level and degree projects. A chance for students to demo to the public and to future employers.</p></div></article>
+<article class="who c"><img src="/assets/img/gallery/p63-t.jpg" alt="Engineers working alongside a collaborative robot arm" loading="lazy" width="640" height="440"><div><span class="uid">uid=1002(industry)</span><h3>Industry &amp; employers</h3><p>Tech companies and their in-house enthusiasts: show what you build, meet local talent, and run a hands-on demo your engineers are proud of.</p></div></article>
 </div>
 </div>
 </section>
@@ -130,7 +131,7 @@ ENTRY  Free · all ages</pre>
 <div class="logos" aria-label="Partner logos (coming soon)">
 <div>[Headline partner]</div><div>[Industry partner]</div><div>[Industry partner]</div><div>[College partner]</div><div>[Venue partner]</div>
 </div>
-<a class="btn btn-green" href="mailto:jason.lewis@bcs-shropshire.org?subject=Maker%20%26%20Tech%20Showcase%20sponsor%20pack">Request a sponsor pack</a>
+<a class="btn btn-green" href="#f-sponsor" data-form>Request a sponsor pack</a>
 </div>
 </section>
 
@@ -139,16 +140,16 @@ ENTRY  Free · all ages</pre>
 <p class="cmd" id="mode-h">$ sudo showcase --select-mode</p>
 <div class="two">
 <div class="mode visit"><span class="flag">[1] --visit</span><h2>Visit</h2><p>Drop in any time. Race a slot car, solder a badge, beat a retro high score and meet the people who built it all.</p>
-<a class="btn btn-lime" href="mailto:jason.lewis@bcs-shropshire.org?subject=Register%20interest%3A%20Maker%20%26%20Tech%20Showcase">Register interest</a></div>
+<a class="btn btn-lime" href="#f-register" data-form>Register interest</a></div>
 <div class="mode exhibit"><span class="flag">[2] --exhibit</span><h2>Exhibit</h2><p>Free table, power and Wi-Fi, and your name in our publicity. Makers, clubs, schools, colleges and companies. One desk is plenty.</p>
-<a class="btn btn-black" href="mailto:jason.lewis@bcs-shropshire.org?subject=Exhibit%20at%20the%20Maker%20%26%20Tech%20Showcase">Book a table</a></div>
+<a class="btn btn-black" href="#f-exhibit" data-form>Book a table</a></div>
 </div>
 </div>
 </section>
 
 <section id="man" class="section light man" aria-labelledby="man-h">
 <div class="wrap">
-<div class="man-img"><div class="dots" aria-hidden="true"></div><img src="assets/img/gallery/h1.jpg" alt="BCS Shropshire event in the Telford College atrium" loading="lazy" width="1024" height="874"></div>
+<div class="man-img"><div class="dots" aria-hidden="true"></div><img src="/assets/img/gallery/h1.jpg" alt="BCS Shropshire event in the Telford College atrium" loading="lazy" width="1024" height="874"></div>
 <div class="manpage">
 <div class="bar" id="man-h">SHOWCASE(1) · BCS Shropshire Manual</div>
 <dl>
@@ -172,12 +173,7 @@ ENTRY  Free · all ages</pre>
 </section>
 </main>
 
-<footer>
-<div class="wrap">
-<div>BCS Shropshire Branch · BCS, The Chartered Institute for IT · Registered charity · Stock photos and video: Pexels &amp; Pixabay</div>
-<div class="mono">$ mail <a href="mailto:jason.lewis@bcs-shropshire.org">jason.lewis@bcs-shropshire.org</a></div>
-</div>
-</footer>
+{{FOOTER}}
 
 <div id="tvbox" class="modal tv-modal" role="dialog" aria-modal="true" aria-label="Hackerman's How To Hack Time tutorial">
 <div class="modal-inner">
@@ -191,5 +187,6 @@ ENTRY  Free · all ages</pre>
 <p class="credit mono">Hackerman's Hacking Tutorials: How To Hack Time · Laser Unicorns · embedded from the official upload</p>
 </div>
 </div>
+{{FORMS}}
 </body>
 </html>

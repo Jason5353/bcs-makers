@@ -58,6 +58,7 @@
     m.classList.remove('open');
     document.body.style.overflow = '';
     var fr = m.querySelector('iframe'); if (fr) fr.remove();
+    if (location.hash && m.id === location.hash.slice(1)) history.replaceState(null, '', location.pathname + location.search);
     if (lastFocus) lastFocus.focus();
   }
 
@@ -79,10 +80,55 @@
     });
   }
 
-  /* Shared close behaviour: X button, backdrop click, Escape, arrows */
+  /* 5. Sign-up forms: every button with data-form opens its pop-up.
+     Without JavaScript the link still works (CSS :target) and the form
+     posts straight to Web3Forms. */
+  function openForm(id, zone) {
+    var m = document.getElementById(id);
+    if (!m) return;
+    var f = m.querySelector('form'), sent = m.querySelector('.sent');
+    f.hidden = false; sent.hidden = true;
+    var st = f.querySelector('.status'); st.textContent = ''; st.classList.remove('err');
+    if (zone) { var z = f.querySelector('select[name="zone"]'); if (z) z.value = zone; }
+    openModal(m);
+    var first = f.querySelector('input:not([type=hidden]):not(.hp)'); if (first) first.focus();
+  }
+  document.querySelectorAll('a[data-form]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      openForm(a.getAttribute('href').slice(1), a.getAttribute('data-zone'));
+    });
+  });
+  if (/^#f-/.test(location.hash)) openForm(location.hash.slice(1));
+  document.querySelectorAll('form.signup').forEach(function (f) {
+    f.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var btn = f.querySelector('.send'), st = f.querySelector('.status');
+      var data = {};
+      new FormData(f).forEach(function (v, k) { data[k] = v; });
+      if (data.botcheck) return;
+      delete data.botcheck;
+      btn.disabled = true; st.classList.remove('err'); st.textContent = '$ sending…';
+      fetch(f.action, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(data) })
+        .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return r.ok && j.success; }); })
+        .then(function (ok) {
+          btn.disabled = false;
+          if (!ok) throw new Error('send failed');
+          f.reset(); f.hidden = true;
+          var sent = f.parentNode.querySelector('.sent'); sent.hidden = false;
+          sent.querySelector('.x').focus();
+        })
+        .catch(function () {
+          btn.disabled = false; st.classList.add('err');
+          st.textContent = "Sorry, that didn't send. Please try again in a minute.";
+        });
+    });
+  });
+
+  /* Shared close behaviour: X button, backdrop click, Escape */
   document.querySelectorAll('.modal').forEach(function (m) {
     m.addEventListener('click', function (e) {
-      if (e.target === m || e.target.closest('.x')) closeModal(m);
+      if (e.target === m || e.target.closest('.x')) { e.preventDefault(); closeModal(m); }
     });
   });
   document.addEventListener('keydown', function (e) {
@@ -90,7 +136,7 @@
     if (!open) return;
     if (e.key === 'Escape') closeModal(open);
     if (e.key === 'Tab') { /* keep focus inside the open dialog */
-      var f = open.querySelectorAll('button, a[href], iframe');
+      var f = Array.prototype.filter.call(open.querySelectorAll('button, a[href], iframe, input:not([type=hidden]):not(.hp), select, textarea'), function (el) { return el.offsetParent !== null; });
       if (!f.length) return;
       var first = f[0], last = f[f.length - 1];
       if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }

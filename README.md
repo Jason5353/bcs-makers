@@ -99,3 +99,12 @@ If you add analytics, a form embed or another third party, update the CSP or it 
 ## Caching
 
 `_headers` tells browsers to cache everything in `/assets/` for a week. `tools/build.py` adds a version (`?v=…`) to the CSS and JavaScript links, worked out from each file's contents, so visitors get new styles as soon as you deploy. **Always run `python3 tools/build.py` after editing CSS or JS.** New or changed images should get a new file name.
+
+## Zone pages, About, privacy and forms
+
+- Zone content (words, photos, links) lives in `tools/zones.py`. Edit it, then run `python3 tools/build.py`.
+- Pages: `/zones/<slug>/`, `/about/`, `/privacy/`.
+- Every "Register interest", "Book a table", "Request a sponsor pack" and "Get in touch" button opens a pop-up form.
+  Forms post to Web3Forms, which emails jason.lewis@bcs-shropshire.org. The access key is in `tools/zones.py` (it is public by design).
+  Without JavaScript the pop-ups still open (CSS `:target`) and post directly.
+- CSP in `public/_headers` allows `https://api.web3forms.com` for `connect-src` and `form-action` only.
