@@ -13,7 +13,7 @@ Each zone has:
 
 # Web3Forms access key: public by design (it only lets people send email to the
 # address it was created for). Replace it here if you ever regenerate it.
-FORM_KEY = '9d0d5917-ab99-44fd-981e-56b730c3cb32'
+FORM_KEY = '2bc83df4-4b14-491e-a295-5af486079431'
 CONTACT = '<a href="mailto:jason.lewis@bcs-shropshire.org">jason.lewis@bcs-shropshire.org</a>'
 
 RPI = ('Raspberry Pi Foundation: free projects', 'https://projects.raspberrypi.org/')
