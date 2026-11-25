@@ -194,7 +194,7 @@ for i, z in enumerate(ZONES):
 <p class="intro">{E(z["intro"])}</p>
 <p class="tags mono"><span>ages: all</span><span class="on">exhibitor sign-up: open</span><span>zone: {z["num"]}/{len(ZONES):02d}</span></p>
 </div>
-<div class="zh-img">{img(z["hero"], thumb=False)}</div>
+<div class="zh-img dotted">{img(z["hero"], thumb=False)}</div>
 </div>
 </section>
 
@@ -275,7 +275,7 @@ page('about/index.html', head('About | Makers & Tech Showcase 2027 | BCS Shropsh
 <p class="prompt"><span class="u">maker@bcs-shropshire</span>:<span class="p">~</span>$ whoami</p>
 <h1 class="zh-title">About us<span>/</span></h1>
 <p class="intro">The Makers &amp; Tech Showcase is run by volunteers from BCS Shropshire, the local branch of BCS, The Chartered Institute for IT.</p>
-</div></div>
+</div><div class="dots about-dots" aria-hidden="true"></div></div>
 </section>
 
 <section class="section light">
