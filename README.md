@@ -20,7 +20,11 @@ tools/index.template.html  the page template you edit
 tools/photos.json          photo ids and captions
 ```
 
-## Deploy: GitHub + Cloudflare Pages (about 10 minutes)
+## Deploy: GitHub + Cloudflare (Workers static assets)
+
+The repo is connected to a Cloudflare Worker called **bcs-makers**. Every push to `main` runs `npx wrangler deploy`, which publishes the files listed by `wrangler.jsonc` (everything except what `.assetsignore` leaves out: README, tools, config). `_headers` and `404.html` work the same as on Pages.
+
+### Original Pages instructions (if you ever move back to Pages)
 
 1. **Create the repo.** On GitHub, create a new repository, e.g. `bcs-shropshire/maker-showcase` (public or private both work).
 2. **Push the files.** From this folder:

@@ -1,0 +1,10 @@
+{
+  // Cloudflare Workers static-assets config for the BCS Maker & Tech Showcase site.
+  // Deployed by Workers Builds with `npx wrangler deploy` on every push to main.
+  "name": "bcs-makers",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": ".",
+    "not_found_handling": "404-page"
+  }
+}
