@@ -1,4 +1,4 @@
-"""Builds index.html and assets/js/photos.js from photos.json.
+"""Builds public/index.html from the template and photos.json.
 Run: python3 tools/build.py  (from the repo root)"""
 import json, html, os
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -8,11 +8,10 @@ idx = {pid: i for i, (pid, cap) in enumerate(photos)}
 cap = dict(photos)
 E = html.escape
 
-def tile(pid, hidden=False, cls='tile', img_cls=''):
-    t = ' tabindex="-1"' if hidden else ''
-    return (f'<a class="{cls}" href="assets/img/gallery/{pid}.jpg" data-photo="{idx[pid]}"{t} '
-            f'aria-label="Enlarge photo: {E(cap[pid])}"><img src="assets/img/gallery/{pid}-t.jpg" '
-            f'alt="{"" if hidden else E(cap[pid])}" loading="lazy" decoding="async" width="640" height="440"></a>')
+def tile(pid, hidden=False, cls='tile'):
+    alt = '' if hidden else E(cap[pid])
+    return (f'<div class="{cls}"><img src="assets/img/gallery/{pid}-t.jpg" alt="{alt}" '
+            f'loading="lazy" decoding="async" width="640" height="440"></div>')
 
 n = len(photos)
 order = [photos[(k * 37) % n][0] for k in range(n)]
@@ -48,14 +47,11 @@ hist = '\n'.join(f'<figure>{tile(pid)}<figcaption>{E(line)}</figcaption></figure
 tpl = open(os.path.join(REPO, 'tools', 'index.template.html')).read()
 out = (tpl.replace('{{ROW_A}}', track(rowA)).replace('{{ROW_B}}', track(rowB, rev=True))
           .replace('{{ZONES}}', zones).replace('{{HIST}}', hist).replace('{{COUNT}}', str(n)))
-photos_js = 'window.SHOWCASE_PHOTOS=' + json.dumps(photos) + ';\n'
-open(os.path.join(ROOT, 'assets', 'js', 'photos.js'), 'w').write(photos_js)
 import hashlib
 def ver(*p):
     return hashlib.sha256(open(os.path.join(ROOT, *p), 'rb').read()).hexdigest()[:10]
 # cache-busting: assets are cached for a week, so each file's URL changes when its content does
 out = (out.replace('{{V_CSS}}', ver('assets', 'css', 'site.css'))
-          .replace('{{V_JS}}', ver('assets', 'js', 'site.js'))
-          .replace('{{V_PHOTOS}}', ver('assets', 'js', 'photos.js')))
+          .replace('{{V_JS}}', ver('assets', 'js', 'site.js')))
 open(os.path.join(ROOT, 'index.html'), 'w').write(out)
 print('built index.html with', n, 'photos')

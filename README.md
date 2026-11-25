@@ -12,11 +12,11 @@ public/                    everything published as the website
   _headers                 security headers (Cloudflare)
   favicon.svg, robots.txt
   assets/css/site.css      all styling (BCS palette only)
-  assets/js/site.js        typed headline, menu, photo viewer, strip pause, retro TV
-  assets/js/photos.js      photo list for the viewer (generated)
+  assets/js/site.js        typed headline, menu, hero video, retro TV
+  assets/video/            hero montage (montage.mp4, 10 clips × 4 s) and its poster frame
   assets/fonts/            self-hosted Barlow + JetBrains Mono (SIL OFL, licences included)
   assets/img/              green BCS logo, 85 photos (<id>.jpg full, <id>-t.jpg thumbnail)
-tools/build.py             rebuilds public/index.html and photos.js
+tools/build.py             rebuilds public/index.html
 tools/index.template.html  the page template you edit
 tools/photos.json          photo ids and captions
 wrangler.jsonc             Cloudflare Worker config (publishes public/)
@@ -53,7 +53,7 @@ Edit `tools/index.template.html` (page text), `tools/photos.json` (photos and ca
 python3 tools/build.py
 ```
 
-That regenerates `public/index.html` and `public/assets/js/photos.js`. Commit and push.
+That regenerates `public/index.html`. Commit and push.
 Quick text fixes can also be made straight in `public/index.html`, but they'll be overwritten next time the build runs.
 
 ### Before going live: placeholders to fill
@@ -85,13 +85,13 @@ If you add analytics, a form embed or another third party, update the CSP or it 
 ## Accessibility
 
 - Typed headline is announced in full to screen readers (`aria-label`); visitors with "reduce motion" set get the static headline, no scrolling strips and no blinking cursor.
-- Strips pause on hover/focus and have a pause button.
-- Photo viewer: keyboard arrows, Escape to close, focus kept inside the dialog and returned afterwards.
+- The photo strips scroll continuously (by design they don't pause) and stop completely for visitors with "reduce motion" set.
+- The hero video is muted, and shows a still frame instead for "reduce motion" visitors.
 - All photos have captions used as alt text.
 
 ## Photo credits and consent
 
-- Stock photos are from **Pexels** and **Pixabay** (free licences). Some show brands (e.g. arcade games, consoles). Fine in the gallery, but avoid them on posters or as the main hero image.
+- Stock photos and the hero video clips are from **Pexels** and **Pixabay** (free licences). Some show brands (e.g. arcade games, consoles). Fine in the gallery, but avoid them on posters or as the main hero image.
 - BCS event photos: audience faces have been blurred. If anyone asks for a photo to be removed, delete it from `tools/photos.json` and `assets/img/gallery/`, then rebuild.
 - 3D printing photos: QR code blurred.
 - Fonts: Barlow and JetBrains Mono, SIL Open Font License 1.1 (see `assets/fonts/`).

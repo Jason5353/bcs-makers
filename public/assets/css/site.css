@@ -64,7 +64,7 @@ h1,h2,h3{margin:0}
 .hero p.intro{font-size:21px;line-height:1.5;font-weight:300;max-width:560px;margin:26px 0 0}
 .actions{display:flex;flex-wrap:wrap;gap:16px;margin-top:34px}
 .frame{border:2px solid var(--lime);padding:8px;clip-path:polygon(0 0,calc(100% - 36px) 0,100% 36px,100% 100%,36px 100%,0 calc(100% - 36px))}
-.frame img{width:100%;height:300px;object-fit:cover;clip-path:polygon(0 0,calc(100% - 30px) 0,100% 30px,100% 100%,30px 100%,0 calc(100% - 30px))}
+.frame img,.frame video{display:block;width:100%;height:300px;object-fit:cover;background:#000;clip-path:polygon(0 0,calc(100% - 30px) 0,100% 30px,100% 100%,30px 100%,0 calc(100% - 30px))}
 .term{background:var(--grey);color:var(--black)}
 .term-bar{background:var(--white);border-bottom:1px solid var(--black);display:flex;justify-content:space-between;padding:8px 14px;font-size:13px;font-weight:700;font-family:var(--mono)}
 .term pre{margin:0;padding:16px 18px;font-family:var(--mono);font-size:15px;line-height:1.8;white-space:pre-wrap}
@@ -82,13 +82,9 @@ h1,h2,h3{margin:0}
 .strip+.strip{margin-top:12px}
 .track{display:flex;gap:12px;padding-right:12px;width:max-content;animation:slide 220s linear infinite}
 .track.rev{animation-direction:reverse;animation-duration:250s}
-.strip:hover .track,.strip:focus-within .track,.strip.paused .track{animation-play-state:paused}
 @keyframes slide{to{transform:translateX(-50%)}}
-.tile{padding:0;border:0;background:#111;cursor:zoom-in;flex:0 0 auto;display:block}
+.tile{background:#111;flex:0 0 auto;display:block}
 .tile img{width:320px;height:220px;object-fit:cover}
-.tile:hover img,.tile:focus-visible img{outline:3px solid var(--lime);outline-offset:-3px}
-.pause-btn{background:transparent;border:1px solid var(--grey);color:var(--grey);font-family:var(--mono);font-size:13px;padding:8px 12px;cursor:pointer}
-.pause-btn:hover{border-color:var(--lime);color:var(--lime)}
 
 /* show floor */
 .zones{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
